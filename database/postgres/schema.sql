@@ -120,6 +120,26 @@ CREATE TABLE vulnerabilities (
 
 
 
+    attack_vector VARCHAR(50),
+
+
+
+    attack_complexity VARCHAR(50),
+
+
+
+    privileges_required VARCHAR(50),
+
+
+
+    user_interaction VARCHAR(50),
+
+
+
+    cwe VARCHAR(50),
+
+
+
     exploit_available BOOLEAN DEFAULT FALSE,
 
 
