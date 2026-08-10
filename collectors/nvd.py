@@ -110,8 +110,12 @@ class NVDCollector(BaseCollector):
                     conn.commit()
                     processed += 1
                     
+                    if processed % 50 == 0:
+                        logger.info(f"[{self.source_name}] Progress: Enriched {processed}/{len(cves_to_enrich)} CVEs...")
+                    
                     # Respect NVD Rate limits (50 req/30s with API key, 5 req/30s without)
                     time.sleep(1 if self.api_key else 6)
+
                     
                 except Exception as e:
                     conn.rollback()
