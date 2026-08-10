@@ -8,11 +8,11 @@ def main():
     
     # List of collector scripts to run
     collectors = [
-        "cisa_kev.py",
-        "nvd.py",
         "malwarebazaar.py",
         "urlhaus.py",
-        "otx.py"
+        "otx.py",
+        "cisa_kev.py",
+        "nvd.py"
     ]
     
     for collector in collectors:
