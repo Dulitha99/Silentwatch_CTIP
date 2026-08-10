@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
 from collectors.base_collector import BaseCollector
@@ -42,7 +42,18 @@ class URLHausCollector(BaseCollector):
         source_id = self.get_source_id(cursor)
 
         inserted = 0
+        one_hour_ago = datetime.utcnow() - timedelta(hours=1)
+        
         for item in urls:
+            date_added_str = item.get("date_added")
+            if date_added_str:
+                try:
+                    date_added = datetime.strptime(date_added_str, "%Y-%m-%d %H:%M:%S")
+                    if date_added < one_hour_ago:
+                        continue
+                except ValueError:
+                    pass
+
             url_value = item.get("url")
             
             tags = item.get("tags")

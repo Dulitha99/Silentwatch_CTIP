@@ -83,6 +83,17 @@ services:
 
 
 
+  collectors-backend:
+    build: .
+    container_name: silentwatch-collectors
+    restart: always
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+
 volumes:
 
 

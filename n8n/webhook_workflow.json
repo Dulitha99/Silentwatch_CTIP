@@ -20,7 +20,7 @@
     },
     {
       "parameters": {
-        "url": "http://host.docker.internal:8001/",
+        "url": "http://collectors-backend:8001/",
         "options": {}
       },
       "name": "Trigger Python Script",

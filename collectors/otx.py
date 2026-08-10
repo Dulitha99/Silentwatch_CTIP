@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
 from collectors.base_collector import BaseCollector
@@ -41,8 +41,19 @@ class OTXCollector(BaseCollector):
 
         inserted = 0
         total_indicators = 0
+        one_hour_ago = datetime.utcnow() - timedelta(hours=1)
         
         for pulse in pulses:
+            modified_str = pulse.get("modified") or pulse.get("created")
+            if modified_str:
+                try:
+                    modified_str = modified_str.replace("Z", "")
+                    pulse_time = datetime.fromisoformat(modified_str)
+                    if pulse_time < one_hour_ago:
+                        continue
+                except ValueError:
+                    pass
+
             indicators = pulse.get("indicators", [])
             tags = pulse.get("tags", [])
             if tags is None:
