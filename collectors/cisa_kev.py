@@ -35,7 +35,12 @@ class CISAKEVCollector(BaseCollector):
         for item in vulns:
             cve_id = item.get("cveID")
             vendor = item.get("vendorProject")
+            if vendor and len(vendor) > 100:
+                vendor = vendor[:97] + "..."
+                
             product = item.get("product")
+            if product and len(product) > 100:
+                product = product[:97] + "..."
             name = item.get("vulnerabilityName")
             description = item.get("shortDescription")
             date_added = item.get("dateAdded")
