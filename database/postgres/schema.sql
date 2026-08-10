@@ -348,46 +348,34 @@ CREATE TABLE attack_techniques (
 
 );
 CREATE TABLE cyber_news (
-
-
-
     id SERIAL PRIMARY KEY,
-
-
-
     title TEXT,
-
-
-
     summary TEXT,
-
-
-
-    url TEXT,
-
-
-
+    content TEXT,
+    url TEXT UNIQUE,
     source VARCHAR(100),
-
-
-
     category VARCHAR(100),
-
-
-
-    severity VARCHAR(20),
-
-
-
+    author VARCHAR(100),
     published_date TIMESTAMP,
-
-
-
-    tags TEXT[]
-
-
-
+    language VARCHAR(20),
+    article_hash VARCHAR(64) UNIQUE,
+    related_cves JSONB,
+    related_iocs JSONB,
+    related_vendors JSONB,
+    related_products JSONB,
+    related_threat_actors JSONB,
+    related_malware JSONB,
+    tags JSONB,
+    severity VARCHAR(20),
+    sentiment VARCHAR(20),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX idx_cyber_news_article_hash ON cyber_news(article_hash);
+CREATE INDEX idx_cyber_news_published_date ON cyber_news(published_date);
+CREATE INDEX idx_cyber_news_source ON cyber_news(source);
+CREATE INDEX idx_cyber_news_severity ON cyber_news(severity);
 CREATE TABLE security_advisories (
 
 

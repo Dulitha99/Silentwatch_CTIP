@@ -1,0 +1,122 @@
+[
+  {
+    "id": "the_hacker_news",
+    "name": "The Hacker News",
+    "category": "News",
+    "type": "RSS",
+    "rss_url": "https://feeds.feedburner.com/TheHackersNews",
+    "website": "https://thehackernews.com/",
+    "trust_score": 90,
+    "enabled": true,
+    "collection_interval": 3600,
+    "tags": ["cybersecurity", "news"]
+  },
+  {
+    "id": "bleepingcomputer",
+    "name": "BleepingComputer",
+    "category": "News",
+    "type": "RSS",
+    "rss_url": "https://www.bleepingcomputer.com/feed/",
+    "website": "https://www.bleepingcomputer.com/",
+    "trust_score": 95,
+    "enabled": true,
+    "collection_interval": 3600,
+    "tags": ["infosec", "news"]
+  },
+  {
+    "id": "cisa_advisories",
+    "name": "CISA Advisories",
+    "category": "Government",
+    "type": "RSS",
+    "rss_url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+    "website": "https://www.cisa.gov/",
+    "trust_score": 100,
+    "enabled": true,
+    "collection_interval": 3600,
+    "tags": ["cisa", "advisory", "government"]
+  },
+  {
+    "id": "microsoft_msrc",
+    "name": "Microsoft MSRC",
+    "category": "Vendor",
+    "type": "RSS",
+    "rss_url": "https://msrc.microsoft.com/update-guide/rss",
+    "website": "https://msrc.microsoft.com/",
+    "trust_score": 100,
+    "enabled": true,
+    "collection_interval": 3600,
+    "tags": ["microsoft", "vendor", "patch"]
+  },
+  {
+    "id": "cisco_talos",
+    "name": "Cisco Talos",
+    "category": "Research",
+    "type": "RSS",
+    "rss_url": "https://blog.talosintelligence.com/rss/",
+    "website": "https://blog.talosintelligence.com/",
+    "trust_score": 90,
+    "enabled": true,
+    "collection_interval": 3600,
+    "tags": ["cisco", "research", "threat-intel"]
+  },
+  {
+    "id": "palo_alto_unit42",
+    "name": "Palo Alto Unit 42",
+    "category": "Research",
+    "type": "RSS",
+    "rss_url": "https://unit42.paloaltonetworks.com/feed/",
+    "website": "https://unit42.paloaltonetworks.com/",
+    "trust_score": 90,
+    "enabled": true,
+    "collection_interval": 3600,
+    "tags": ["paloalto", "research"]
+  },
+  {
+    "id": "google_threat_intelligence",
+    "name": "Google Threat Intelligence",
+    "category": "Research",
+    "type": "RSS",
+    "rss_url": "https://blog.google/threat-intelligence/rss/",
+    "website": "https://blog.google/threat-intelligence/",
+    "trust_score": 95,
+    "enabled": true,
+    "collection_interval": 3600,
+    "tags": ["google", "research", "mandiant"]
+  },
+  {
+    "id": "crowdstrike",
+    "name": "CrowdStrike",
+    "category": "Research",
+    "type": "RSS",
+    "rss_url": "https://www.crowdstrike.com/blog/feed/",
+    "website": "https://www.crowdstrike.com/blog/",
+    "trust_score": 95,
+    "enabled": true,
+    "collection_interval": 3600,
+    "tags": ["crowdstrike", "research"]
+  },
+  {
+    "id": "sentinelone",
+    "name": "SentinelOne",
+    "category": "Research",
+    "type": "RSS",
+    "rss_url": "https://www.sentinelone.com/blog/feed/",
+    "website": "https://www.sentinelone.com/blog/",
+    "trust_score": 90,
+    "enabled": true,
+    "collection_interval": 3600,
+    "tags": ["sentinelone", "research"]
+  },
+  {
+    "id": "fortinet_psirt",
+    "name": "Fortinet PSIRT",
+    "category": "Vendor",
+    "type": "RSS",
+    "rss_url": "https://www.fortiguard.com/rss/ir.xml",
+    "website": "https://www.fortiguard.com/",
+    "trust_score": 90,
+    "enabled": true,
+    "collection_interval": 3600,
+    "tags": ["fortinet", "vendor", "psirt"]
+  }
+]
