@@ -1,0 +1,47 @@
+{
+  "name": "SilentWatch Collectors Orchestrator",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [240, 300],
+      "typeVersion": 1.1,
+      "id": "1"
+    },
+    {
+      "parameters": {
+        "command": "python d:\\Repos\\Silentwatch_CTIP\\run_all_collectors.py"
+      },
+      "name": "Run Collectors",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [460, 300],
+      "typeVersion": 1,
+      "id": "2"
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Run Collectors",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {}
+}
