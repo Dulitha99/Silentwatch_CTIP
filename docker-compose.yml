@@ -1,0 +1,97 @@
+services:
+
+
+
+  postgres:
+
+    image: postgres:16
+
+    container_name: silentwatch-postgres
+
+    restart: always
+
+    env_file:
+
+      - .env
+
+    volumes:
+
+      - postgres_data:/var/lib/postgresql/data
+
+    ports:
+
+      - "5432:5432"
+
+
+
+
+
+  n8n:
+
+    image: n8nio/n8n:latest
+
+    container_name: silentwatch-n8n
+
+    restart: always
+
+    ports:
+
+      - "5678:5678"
+
+    env_file:
+
+      - .env
+
+    depends_on:
+
+      - postgres
+
+    volumes:
+
+      - n8n_data:/home/node/.n8n
+
+
+
+
+
+  grafana:
+
+    image: grafana/grafana:latest
+
+    container_name: silentwatch-grafana
+
+    restart: always
+
+    ports:
+
+      - "3000:3000"
+
+    env_file:
+
+      - .env
+
+    volumes:
+
+      - grafana_data:/var/lib/grafana
+
+    depends_on:
+
+      - postgres
+
+
+
+
+
+volumes:
+
+
+
+  postgres_data:
+
+
+
+  n8n_data:
+
+
+
+  grafana_data:
