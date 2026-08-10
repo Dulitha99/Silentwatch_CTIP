@@ -3,9 +3,12 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from datetime import datetime
+from dotenv import load_dotenv
 
 from collectors.base_collector import BaseCollector
 from collectors.utils.logger import logger
+
+load_dotenv()
 
 class URLHausCollector(BaseCollector):
     def __init__(self):
@@ -15,9 +18,14 @@ class URLHausCollector(BaseCollector):
             trust_score=90
         )
         self.api_url = "https://urlhaus-api.abuse.ch/v1/urls/recent/"
+        self.api_key = os.getenv("MALWAREBAZAAR_API_KEY")
 
     def fetch_data(self):
-        response = self.fetch_api(self.api_url, method="GET")
+        headers = {}
+        if self.api_key:
+            headers["Auth-Key"] = self.api_key
+            
+        response = self.fetch_api(self.api_url, method="GET", headers=headers)
         return response.json()
 
     def process_data(self, data):
