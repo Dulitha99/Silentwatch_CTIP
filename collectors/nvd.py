@@ -107,15 +107,16 @@ class NVDCollector(BaseCollector):
                         """,
                         (cvss_score, severity, attack_vector, attack_complexity, privileges_required, user_interaction, cwe, row_id)
                     )
+                    conn.commit()
                     processed += 1
                     
                     # Respect NVD Rate limits (50 req/30s with API key, 5 req/30s without)
                     time.sleep(1 if self.api_key else 6)
                     
                 except Exception as e:
+                    conn.rollback()
                     logger.error(f"[{self.source_name}] Error enriching {cve_id}: {e}")
                     
-            conn.commit()
             status = "success"
             logger.info(f"[{self.source_name}] Successfully enriched {processed} CVEs.")
         except Exception as e:
