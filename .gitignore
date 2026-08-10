@@ -1,0 +1,43 @@
+.env
+
+
+
+# Python
+
+__pycache__/
+
+*.pyc
+
+
+
+# Database
+
+*.db
+
+
+
+# Logs
+
+*.log
+
+
+
+# Docker
+
+postgres_data/
+
+
+
+# IDE
+
+.vscode/
+
+.idea/
+
+
+
+# OS
+
+.DS_Store
+
+Thumbs.db
