@@ -79,9 +79,9 @@ CREATE TABLE indicators (
 
     tags TEXT[],
 
-
-
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    UNIQUE(indicator_type, indicator_value)
 
 );
 CREATE TABLE vulnerabilities (
@@ -253,11 +253,9 @@ CREATE TABLE malware_samples (
 
     first_seen TIMESTAMP,
 
-
-
-    source_id INTEGER REFERENCES intel_sources(id)
-
-
+    source_id INTEGER REFERENCES intel_sources(id),
+    
+    UNIQUE(sha256)
 
 );
 CREATE TABLE threat_actors (

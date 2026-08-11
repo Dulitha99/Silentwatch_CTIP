@@ -77,11 +77,13 @@ class OTXCollector(BaseCollector):
                     INSERT INTO indicators
                     (indicator_type, indicator_value, source_id, confidence, severity, tags, first_seen)
                     VALUES (%s,%s,%s,%s,%s,%s,%s)
+                    ON CONFLICT (indicator_type, indicator_value) DO NOTHING
                     """,
                     (ind_type, ind_value, source_id, 80, "High", tags, datetime.utcnow())
                 )
                 
-                inserted += 1
+                if cursor.rowcount:
+                    inserted += 1
 
         conn.commit()
         cursor.close()
